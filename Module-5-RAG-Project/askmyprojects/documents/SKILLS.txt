@@ -1,0 +1,32 @@
+skills = {
+  'AI Systems': [
+    'LLM Systems',
+    'AI Workflow Orchestration',
+    'Machine Learning',
+    'Deep Learning',
+    'Structured Prompting',
+    'Inference Control',
+  ],
+  'Backend': [
+    'Node.js',
+    'Express',
+    'SQL/PostgreSQL',
+    'REST APIs',
+    'Workflow Orchestration',
+    'System Design',
+  ],
+  'Frontend': [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'Responsive Design',
+    'UI/UX',
+  ],
+  'Deployment': [
+    'Git',
+    'Linux',
+    'Vercel',
+    'Production Systems',
+  ]
+}
