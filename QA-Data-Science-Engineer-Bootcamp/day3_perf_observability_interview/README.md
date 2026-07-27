@@ -17,7 +17,7 @@ flowchart LR
 ## Setup and run order
 
 ```bash
-cd Module-7-QA-DS-Engineer-Bootcamp/day3_perf_observability_interview
+cd QA-Data-Science-Engineer-Bootcamp/day3_perf_observability_interview
 pip install -r ../requirements-qa.txt
 
 # Terminal 1

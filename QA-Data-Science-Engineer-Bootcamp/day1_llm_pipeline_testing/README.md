@@ -34,7 +34,7 @@ else is pure Python you can test directly.
 ## Setup
 
 ```bash
-cd Module-7-QA-DS-Engineer-Bootcamp
+cd QA-Data-Science-Engineer-Bootcamp
 pip install -r requirements-qa.txt
 cd day1_llm_pipeline_testing
 pytest -v          # everything will FAIL right now -- that's the starting line, not a bug

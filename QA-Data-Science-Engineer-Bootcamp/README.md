@@ -1,4 +1,4 @@
-# Module 7: QA / Data Science Engineer — 3-Day Interview Bootcamp
+# QA Data Science Engineer — 3-Day Interview Bootcamp
 
 You're an experienced backend/AI engineer (Node.js, Python, LLM
 orchestration, multi-agent systems) with **zero formal QA/testing
@@ -58,7 +58,7 @@ flowchart TD
 ## Setup (once, before Day 1)
 
 ```bash
-cd Module-7-QA-DS-Engineer-Bootcamp
+cd QA-Data-Science-Engineer-Bootcamp
 pip install -r requirements-qa.txt
 ```
 
@@ -68,7 +68,7 @@ Python 3.11+ assumed (matches this environment). Each day also has its own
 ## Directory map
 
 ```
-Module-7-QA-DS-Engineer-Bootcamp/
+QA-Data-Science-Engineer-Bootcamp/
 ├── requirements-qa.txt
 ├── day1_llm_pipeline_testing/
 │   ├── pipeline/            # the stub mock-LLM + rule-based classifier you test against

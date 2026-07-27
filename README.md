@@ -46,7 +46,7 @@ Learn as you build. Not after. Not before. **While.**
 | **4** | [Interview Storytelling](./Module-4-Interview-Storytelling/) | Mastered STAR method for technical stories |
 | **5** | [RAG Project](./Module-5-RAG-Project/) | Hands-on: RAG system over my own portfolio |
 | **6** | [Know Your Projects](./Module-6-Know-Your-Projects/) | Explained every library, every decision |
-| **7** | [QA/DS Engineer Bootcamp](./Module-7-QA-DS-Engineer-Bootcamp/) | 3-day hands-on QA/testing crash course: pytest, Pandera, ML-CI, Locust |
+| **7** | [QA/DS Engineer Bootcamp](./QA-Data-Science-Engineer-Bootcamp/) | 3-day hands-on QA/testing crash course: pytest, Pandera, ML-CI, Locust |
 
 ---
 
@@ -69,14 +69,14 @@ This is where you learn why you used `useEffect` instead of `useState`, why you 
 
 ---
 
-## 🧪 Module 7: QA/DS Engineer Bootcamp (3-Day Crash Course)
+## 🧪 QA Data Science Engineer Bootcamp (3-Day Crash Course)
 
 **For when the role shifts to QA/Data Science Engineer** and testing isn't
 your background — a scaffolded, hands-on 3-day bootcamp where you write
 the tests yourself against a stub GenAI pipeline:
 
 ```
-Module-7-QA-DS-Engineer-Bootcamp/
+QA-Data-Science-Engineer-Bootcamp/
 ├── day1_llm_pipeline_testing/         # pytest, pytest-httpx, LangSmith concepts, LLM-as-judge
 ├── day2_data_contracts_ci/            # Pandera schemas, NumPy/SciPy checks, real GH Actions CI
 └── day3_perf_observability_interview/ # Locust load testing, Prometheus/Grafana concepts, mock interview
@@ -85,7 +85,7 @@ Module-7-QA-DS-Engineer-Bootcamp/
 Each day ships a working pipeline/service to test against, a TODO-driven
 task list (the module doesn't write your tests for you), planted bugs to
 catch, and a `solutions/` folder to self-check against once you've
-attempted it. See its [README](./Module-7-QA-DS-Engineer-Bootcamp/) for the
+attempted it. See its [README](./QA-Data-Science-Engineer-Bootcamp/) for the
 full roadmap and an explicit reality check on what's learnable hands-on in
 3 days vs. what to just talk about fluently.
 

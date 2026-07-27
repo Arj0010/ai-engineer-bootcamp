@@ -27,7 +27,7 @@ someone remembers to."
 ## Setup
 
 ```bash
-cd Module-7-QA-DS-Engineer-Bootcamp/day2_data_contracts_ci
+cd QA-Data-Science-Engineer-Bootcamp/day2_data_contracts_ci
 pip install -r ../requirements-qa.txt
 pytest -v      # starts red -- schema_todo.py and statistical_checks_todo.py are unimplemented
 ```

@@ -3,11 +3,11 @@ name: QA/DS Bootcamp CI
 on:
   push:
     paths:
-      - "Module-7-QA-DS-Engineer-Bootcamp/**"
+      - "QA-Data-Science-Engineer-Bootcamp/**"
       - ".github/workflows/qa-ds-bootcamp-ci.yml"
   pull_request:
     paths:
-      - "Module-7-QA-DS-Engineer-Bootcamp/**"
+      - "QA-Data-Science-Engineer-Bootcamp/**"
       - ".github/workflows/qa-ds-bootcamp-ci.yml"
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Module-7-QA-DS-Engineer-Bootcamp/day1_llm_pipeline_testing
+        working-directory: QA-Data-Science-Engineer-Bootcamp/day1_llm_pipeline_testing
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Module-7-QA-DS-Engineer-Bootcamp/day2_data_contracts_ci
+        working-directory: QA-Data-Science-Engineer-Bootcamp/day2_data_contracts_ci
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
