@@ -11,6 +11,7 @@ pandera>=0.20.0
 pandas>=2.0.0
 numpy>=1.26.0
 scipy>=1.11.0
+dagster>=1.7.0
 
 # Day 3: mock inference service + load testing
 fastapi>=0.110.0

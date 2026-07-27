@@ -14,6 +14,8 @@ flowchart TD
     D --> E[GitHub Actions CI]
     E -->|all jobs green| F[Merge allowed]
     E -->|any job red| X3[Merge blocked]
+    B --> G["Dagster asset pipeline\nraw -> validated -> drift_report"]
+    G -->|broken data| X4[Whole materialize() run fails]
 ```
 
 Schemas catch row-level structural problems (wrong type, out-of-range
@@ -37,8 +39,9 @@ pytest -v      # starts red -- schema_todo.py and statistical_checks_todo.py are
 | 1 | A | `schemas/schema_todo.py`, `data/*.csv` | Pandera schema definition, `lazy=True` validation |
 | 2 | B | `validation/statistical_checks_todo.py` | NumPy invariants + SciPy `ks_2samp` drift detection |
 | 3 | — | `tests/test_data_contracts_todo.py` | tying both into pytest |
-| 4 | — | `.github/workflows/qa-ds-bootcamp-ci.yml` (repo root) | reading a real ML CI pipeline |
-| 5 | — | `docker_k8s_concepts.md` | conceptual only, read don't build |
+| 4 | C | `orchestration_testing/dagster_pipeline_todo.py` | orchestration-layer testing (Dagster `materialize`, Airflow concept comparison) |
+| 5 | — | `.github/workflows/qa-ds-bootcamp-ci.yml` (repo root) | reading a real ML CI pipeline |
+| 6 | — | `docker_k8s_concepts.md` | conceptual only, read don't build |
 
 `data/broken_predictions.csv` has 6 distinct planted defects — before you
 open `schema_todo.py`, open the CSV and try to spot all of them yourself.
@@ -76,13 +79,22 @@ mistake to catch in a QA-focused interview.
 4. `class_balance_check`'s `min_fraction` default is 0.02. What real-world
    change to the underlying data (not the code) would cause this check to
    start failing? Is that failure always a bug?
+5. `dg.materialize(...)` runs your asset pipeline in-process for a test.
+   What's the equivalent Airflow concept, and why did we pick Dagster's
+   API to build hands-on instead of Airflow's in a 3-day window?
+6. Why should `validated_predictions` fail the ENTIRE Dagster run instead
+   of, say, logging a warning and passing an empty DataFrame downstream to
+   `drift_report`? What would the second approach hide?
 
 ## Reality check
 
 - **Realistic hands-on in 3 days:** Pandera schema basics, NumPy/SciPy
-  invariant checks, reading and adapting a GitHub Actions YAML file.
+  invariant checks, reading and adapting a GitHub Actions YAML file,
+  Dagster asset testing via `dg.materialize`.
 - **Not realistic hands-on in 3 days:** setting up Kubernetes-based test
   infrastructure, a full statistical-monitoring service, branch-protection
-  administration across a real org's multiple repos. Read
-  `docker_k8s_concepts.md`, understand the diagrams, and be ready to talk
-  through the tradeoffs — that's the appropriate depth here.
+  administration across a real org's multiple repos, a real Airflow
+  environment (metastore + scheduler) to run `airflow dags test` against.
+  Read `docker_k8s_concepts.md` and `orchestration_testing/README.md`,
+  understand the diagrams, and be ready to talk through the tradeoffs —
+  that's the appropriate depth here.

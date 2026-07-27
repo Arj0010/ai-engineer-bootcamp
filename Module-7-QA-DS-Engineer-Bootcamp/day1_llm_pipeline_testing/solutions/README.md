@@ -14,3 +14,4 @@ Files:
 - `test_pipeline.solution.py` — reference for Exercise B
 - `langsmith_stub.solution.py` — reference for Exercise C
 - `judge.solution.py` — reference for Exercise D
+- `cost_monitor.solution.py` + `test_cost_monitoring.solution.py` — reference for Exercise E

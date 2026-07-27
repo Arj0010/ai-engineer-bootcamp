@@ -24,15 +24,17 @@ flowchart TD
         D1B[pytest-httpx\nmocking the LLM's HTTP call]
         D1C[LangSmith concepts\nmock regression + determinism check]
         D1D[LLM-as-judge\nrule-based + LLM hallucination/toxicity check]
-        D1A --> D1B --> D1C --> D1D
+        D1E[Cost/token/timeout monitoring\ndependency-injected clock]
+        D1A --> D1B --> D1C --> D1D --> D1E
     end
 
     subgraph Day2["Day 2 — Data Contracts, Schemas, CI/CD"]
         D2A[Pandera schema\nvalidate good vs broken CSV]
         D2B[NumPy/SciPy checks\nbounds, class balance, drift]
-        D2C[GitHub Actions CI\nreal workflow, red to green]
-        D2D[Docker/K8s\nconceptual only]
-        D2A --> D2B --> D2C --> D2D
+        D2C[Dagster asset testing\nmaterialize good vs broken run]
+        D2D[GitHub Actions CI\nreal workflow, red to green]
+        D2E[Docker/K8s\nconceptual only]
+        D2A --> D2B --> D2C --> D2D --> D2E
     end
 
     subgraph Day3["Day 3 — Performance, Observability, Mock Interview"]
@@ -73,11 +75,13 @@ Module-7-QA-DS-Engineer-Bootcamp/
 │   ├── tests/               # TODO test stubs -- your work
 │   ├── langsmith_mock/      # LangSmith concept + local mock exercise
 │   ├── llm_judge/           # rule-based + LLM-as-judge exercise
+│   ├── genai_ops_monitoring/ # token/cost estimation + timeout-budget enforcement exercise
 │   └── solutions/           # reference solutions -- attempt first!
 ├── day2_data_contracts_ci/
 │   ├── data/                # good_predictions.csv + broken_predictions.csv (6 planted defects)
 │   ├── schemas/              # Pandera schema TODO
 │   ├── validation/           # NumPy/SciPy statistical checks TODO
+│   ├── orchestration_testing/ # Dagster asset-pipeline testing exercise (+ Airflow concept notes)
 │   ├── tests/                # tying it together
 │   ├── docker_k8s_concepts.md
 │   └── solutions/
@@ -100,18 +104,25 @@ This is flagged per-day in each README, collected here for a fast pre-interview 
 - Mocking HTTP-based LLM calls with `pytest-httpx`
 - The *shape* of LangSmith's regression/determinism workflow (via a local mock)
 - Rule-based + LLM-as-judge hallucination/toxicity checks
+- Token usage estimation, cost calculation, and timeout-budget enforcement for GenAI calls (Day 1, Exercise E)
 - Pandera schema definition and validation (including `lazy=True`)
 - NumPy/SciPy statistical invariants (bounds, class balance, KS-test drift)
+- Orchestration-layer testing with Dagster's `materialize()` (Day 2, Exercise C)
 - Reading and adapting a real GitHub Actions ML CI workflow
 - Running Locust against a mock service and correctly reading p95/throughput output
 
 **Know conceptually, don't attempt hands-on (time-boxed out on purpose):**
 - Real LangSmith account/dashboard setup — the concepts transfer directly, the UI doesn't need touching
 - Fine-tuning or seriously prompt-engineering a production-grade judge model
+- A real tokenizer (`tiktoken`) instead of Day 1 Exercise E's chars-per-token approximation
 - Kubernetes-based test infrastructure (Jobs, sidecars, ephemeral namespaces) — `day2_data_contracts_ci/docker_k8s_concepts.md` covers what to say
+- Airflow's actual test harness (`airflow dags test`, a real metastore) — `day2_data_contracts_ci/orchestration_testing/README.md` covers the concept and the lighter "DAG integrity test" pattern to describe instead
+- GitLab CI / Jenkins specifically — concepts transfer directly from the GitHub Actions workflow you have working
+- Postman — a manual/exploratory API tool; `pytest-httpx` covers the automated-testing angle the JD actually cares about
 - k6 (read the reference script, understand it vs. Locust, don't install it)
-- Standing up real Prometheus + Grafana + Alertmanager
+- Standing up real Prometheus + Grafana + Alertmanager, or real CPU/memory resource-usage monitoring under load (Locust gives you latency/throughput, not resource metrics)
 - Branch-protection administration across a real multi-repo org
+- "Policy adherence" checks as a category distinct from hallucination/toxicity (same rule-based + LLM-judge pattern from Day 1 Exercise D applies — just a different rubric)
 
 Being explicit about this split in the actual interview — "I built X hands-on
 in my prep, and I understand Y conceptually but haven't set it up myself" —

@@ -7,3 +7,4 @@ into the chat for critique.
 - `schema.solution.py` — reference for Exercise A
 - `statistical_checks.solution.py` — reference for Exercise B
 - `test_data_contracts.solution.py` — reference tests tying both together
+- `dagster_pipeline.solution.py` + `test_orchestration.solution.py` — reference for Exercise C

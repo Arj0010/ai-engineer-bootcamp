@@ -20,6 +20,8 @@ flowchart TD
     G --> J[Ship / flag decision]
     H --> J
     I --> J
+    F --> K["InstrumentedLLMClient.complete_with_metrics()\ntokens, cost, timeout budget"]
+    K --> L[Cost/latency ops dashboard input]
 
     style D fill:#5b8def,color:#fff
     style I fill:#5b8def,color:#fff
@@ -39,7 +41,7 @@ pytest -v          # everything will FAIL right now -- that's the starting line,
 ```
 
 Every test currently raises `NotImplementedError`. Your job is to make them
-pass by implementing them (Exercises A and B) or by implementing the
+pass by implementing them (Exercises A, B, E) or by implementing the
 functions under test (Exercises C and D) — read each file's docstring for
 the exact task list.
 
@@ -51,6 +53,7 @@ the exact task list.
 | 2 | B | `tests/test_pipeline_todo.py` | mocking HTTP calls with `pytest-httpx` |
 | 3 | C | `langsmith_mock/langsmith_stub.py` | regression testing & determinism checks (LangSmith concept) |
 | 4 | D | `llm_judge/judge_todo.py` | rule-based + LLM-as-judge hallucination/toxicity checks |
+| 5 | E | `genai_ops_monitoring/cost_monitor_todo.py`, `tests/test_cost_monitoring_todo.py` | token/cost estimation, timeout-budget enforcement, testing time-dependent code via dependency injection |
 
 Run `pytest -v` after each exercise to see your progress move from red to
 green. Bring your attempt back to the chat before moving to the next
@@ -71,6 +74,13 @@ shown whether it passes.
    fail safe / fail open / raise — defend your choice for a customer-facing
    summarization feature vs. an internal analytics feature. Would you make
    a different choice for each?
+5. Why is injecting a `clock` callable into `InstrumentedLLMClient` a
+   better testing design than calling `time.perf_counter()` directly and
+   monkeypatching the global `time` module in tests?
+6. A prompt template change doubles token usage per call but the outputs
+   still look correct. Which of Day 1's exercises (A-D) would catch this,
+   and which wouldn't? What does that tell you about test coverage
+   "correctness" vs. test coverage "operability"?
 
 ## Reality check
 
@@ -80,6 +90,8 @@ shown whether it passes.
 - **Not realistic to get hands-on in 3 days (talk about it fluently
   instead):** wiring up a real LangSmith account/dashboard, fine-tuning or
   even prompt-engineering a production-grade judge model, building a real
-  toxicity classifier. Know the concepts and be honest in the interview
-  that your hands-on experience here is a deliberately scoped-down mock —
-  that honesty reads better than pretending otherwise.
+  toxicity classifier, using a real tokenizer (`tiktoken`) instead of the
+  chars-per-token approximation in Exercise E. Know the concepts and be
+  honest in the interview that your hands-on experience here is a
+  deliberately scoped-down mock — that honesty reads better than
+  pretending otherwise.
