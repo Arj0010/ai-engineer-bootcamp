@@ -1,0 +1,11 @@
+id,text,predicted_label,confidence,model_version,timestamp
+1,I need a refund on my invoice,billing,0.91,v1.2.0,2026-07-01T10:00:00Z
+2,The app crashes with a 500 error,technical,0.87,v1.2.0,2026-07-01T10:01:00Z
+3,I forgot my password and I'm locked out,account,0.95,v1.2.0,2026-07-01T10:02:00Z
+4,What's the weather like today,other,0.4,v1.2.0,2026-07-01T10:03:00Z
+5,My subscription was charged twice,billing,0.88,v1.2.0,2026-07-01T10:04:00Z
+6,Getting a timeout error on checkout,technical,0.79,v1.2.0,2026-07-01T10:05:00Z
+7,Need to update my email address,account,0.83,v1.2.0,2026-07-01T10:06:00Z
+8,Can I get a price quote,billing,0.61,v1.2.0,2026-07-01T10:07:00Z
+9,The page keeps crashing on load,technical,0.72,v1.2.0,2026-07-01T10:08:00Z
+10,Please enable 2fa on my account,account,0.9,v1.2.0,2026-07-01T10:09:00Z
