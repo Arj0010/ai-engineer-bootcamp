@@ -1,0 +1,59 @@
+name: QA/DS Bootcamp CI
+
+on:
+  push:
+    paths:
+      - "QA-Data-Science-Engineer-Bootcamp/**"
+      - ".github/workflows/qa-ds-bootcamp-ci.yml"
+  pull_request:
+    paths:
+      - "QA-Data-Science-Engineer-Bootcamp/**"
+      - ".github/workflows/qa-ds-bootcamp-ci.yml"
+
+jobs:
+  day1-pipeline-tests:
+    name: "Day 1 - LLM pipeline unit tests"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: QA-Data-Science-Engineer-Bootcamp/day1_llm_pipeline_testing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r ../requirements-qa.txt
+      - name: Run pytest
+        run: pytest -v
+
+  day2-data-contract-tests:
+    name: "Day 2 - schema & statistical contract tests"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: QA-Data-Science-Engineer-Bootcamp/day2_data_contracts_ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r ../requirements-qa.txt
+      - name: Run pytest
+        run: pytest -v
+
+  merge-gate:
+    name: "Required checks gate"
+    needs: [day1-pipeline-tests, day2-data-contract-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: All required checks passed
+        run: echo "Day 1 and Day 2 test suites are green - safe to merge."
+
+# To actually BLOCK a merge on these checks (this workflow alone does not):
+# Settings -> Branches -> Branch protection rule for the default branch ->
+# "Require status checks to pass before merging" -> select
+# "day1-pipeline-tests", "day2-data-contract-tests" (or "merge-gate").
+# A red workflow run and a blocked merge button are two separate pieces of
+# configuration -- this file only produces the former.
