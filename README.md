@@ -79,13 +79,16 @@ the tests yourself against a stub GenAI pipeline:
 QA-Data-Science-Engineer-Bootcamp/
 ├── day1_llm_pipeline_testing/         # pytest, pytest-httpx, LangSmith concepts, LLM-as-judge
 ├── day2_data_contracts_ci/            # Pandera schemas, NumPy/SciPy checks, real GH Actions CI
-└── day3_perf_observability_interview/ # Locust load testing, Prometheus/Grafana concepts, mock interview
+├── day3_perf_observability_interview/ # Locust load testing, Prometheus/Grafana concepts, mock interview
+└── round2_advanced_scenarios/         # advanced follow-up-round prep, written for Qualys specifically
 ```
 
 Each day ships a working pipeline/service to test against, a TODO-driven
 task list (the module doesn't write your tests for you), planted bugs to
 catch, and a `solutions/` folder to self-check against once you've
-attempted it. See its [README](./QA-Data-Science-Engineer-Bootcamp/) for the
+attempted it. `round2_advanced_scenarios/` retells every JD line item as a
+chapter in one running, illustrative security-analytics scenario, for
+advanced follow-up-round prep. See its [README](./QA-Data-Science-Engineer-Bootcamp/) for the
 full roadmap and an explicit reality check on what's learnable hands-on in
 3 days vs. what to just talk about fluently.
 

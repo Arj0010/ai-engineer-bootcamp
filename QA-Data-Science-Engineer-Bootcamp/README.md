@@ -44,7 +44,11 @@ flowchart TD
         D3A --> D3B --> D3C
     end
 
-    Day1 --> Day2 --> Day3
+    subgraph Round2["Round 2 — Advanced Scenarios (Qualys)"]
+        R2[VulnPrioritize scenario walkthrough\nall 8 JD themes, one running story]
+    end
+
+    Day1 --> Day2 --> Day3 --> Round2
 ```
 
 ## Day-by-day schedule (fits in a few focused hours each)
@@ -85,12 +89,13 @@ QA-Data-Science-Engineer-Bootcamp/
 │   ├── tests/                # tying it together
 │   ├── docker_k8s_concepts.md
 │   └── solutions/
-└── day3_perf_observability_interview/
-    ├── mock_service/         # FastAPI mock inference endpoint
-    ├── load_test/            # Locust TODO exercise + k6 reference script
-    ├── observability_concepts/
-    ├── mock_interview/        # question bank for the live mock interview
-    └── solutions/
+├── day3_perf_observability_interview/
+│   ├── mock_service/         # FastAPI mock inference endpoint
+│   ├── load_test/            # Locust TODO exercise + k6 reference script
+│   ├── observability_concepts/
+│   ├── mock_interview/        # question bank for the live mock interview
+│   └── solutions/
+└── round2_advanced_scenarios/  # advanced, Qualys-specific scenario deep dives (round 2 prep)
 
 .github/workflows/qa-ds-bootcamp-ci.yml   # real CI, scoped to this module, runs Day 1+2 tests
 ```
@@ -128,8 +133,28 @@ Being explicit about this split in the actual interview — "I built X hands-on
 in my prep, and I understand Y conceptually but haven't set it up myself" —
 reads as more credible than implying uniform depth across everything.
 
+## Round 2 — Advanced Scenarios (for the follow-up round)
+
+Passed round 1 and have a more advanced round coming up? See
+[`round2_advanced_scenarios/`](./round2_advanced_scenarios/). It's written
+specifically for **Qualys's QA Data Science Engineer role** — every JD
+line item retold as a chapter in one running, illustrative security-analytics
+scenario ("VulnPrioritize"), so the tools stop being disconnected trivia
+and start being decisions you'd actually make, in order, on one system.
+Each module follows: scenario → how it connects to what you already built
+in Days 1-3 → the advanced reasoning a follow-up round is actually
+testing for → a model spoken answer → check-yourself questions with no
+answer key.
+
+This is deliberately a reasoning/fluency document, not new hands-on
+exercises — round 2 tests judgment under a concrete scenario more than it
+tests whether you can type another pytest test.
+
 ## After you finish all 3 days
 
 Come back to the conversation and ask to run the Day 3 mock interview using
 your own real projects — that's the part of this bootcamp that isn't a
-file in this repo, it's a conversation.
+file in this repo, it's a conversation. If you have a follow-up round
+coming up, work through `round2_advanced_scenarios/` the same way, then
+bring your answers to the check-yourself questions back to the
+conversation for critique.
