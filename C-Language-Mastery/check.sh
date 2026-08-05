@@ -14,10 +14,22 @@ trap 'rm -rf "$TMP"' EXIT
 cd "$ROOT" || exit 1
 ok=0; fail=0; failed=()
 
+# A file belongs to a self-managed project if IT or ANY ancestor directory
+# (up to the repo root) contains a Makefile. Such files are built by that
+# project's own Makefile, not compiled standalone — they may need -I paths
+# and companion translation units.
+in_project() {
+    d=$(cd "$(dirname "$1")" && pwd)
+    while [ "$d" != "/" ] && [ "$d" != "$ROOT" ]; do
+        [ -f "$d/Makefile" ] && return 0
+        d=$(dirname "$d")
+    done
+    return 1
+}
+
 # --- standalone single-file programs -----------------------------------------
 while IFS= read -r f; do
-    d=$(dirname "$f")
-    [ -f "$d/Makefile" ] && continue          # handled by its own build
+    in_project "$f" && continue               # handled by its own build
     grep -qE '\bmain[[:space:]]*\(' "$f" || continue
     if out=$($CC $CFLAGS "$f" -o "$TMP/a.out" $LDLIBS 2>&1); then
         ok=$((ok+1))

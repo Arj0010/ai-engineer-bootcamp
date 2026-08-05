@@ -21,13 +21,7 @@ M       ?=
 
 # Every .c file that (a) defines main() and (b) is not part of a directory
 # that manages itself with its own Makefile.
-SRCS := $(shell \
-  find $(if $(M),./$(M),.) -name '*.c' -not -path './$(BUILD)/*' -not -path '*/broken/*' 2>/dev/null | sort | \
-  while read -r f; do \
-    d=$$(dirname "$$f"); \
-    [ -f "$$d/Makefile" ] && continue; \
-    grep -qE '\bmain[[:space:]]*\(' "$$f" && printf '%s\n' "$$f"; \
-  done)
+SRCS := $(shell ./list-programs.sh $(if $(M),./$(M),.))
 
 # ./05-Memory-Management/practice/03_arena.c -> build/05-Memory-Management_practice_03_arena
 BINS := $(foreach s,$(SRCS),$(BUILD)/$(subst /,_,$(patsubst ./%,%,$(basename $(s)))))
