@@ -49,10 +49,16 @@ Each file below follows the same shape:
 5. **Check yourself** — questions with no answer key; if you can't answer
    them cleanly, that's your signal for what to re-read before Wednesday
 
+## Start here
+
+**[→ ROADMAP.md](./ROADMAP.md)** — your level assessment, the 2-day plan,
+and what to drill. Read this before anything else.
+
 ## Index
 
 | # | File | JD line(s) covered |
 |---|------|---------------------|
+| **0** | **[Python fundamentals for testing](./00_python_fundamentals_for_testing.md)** ⭐ | Prerequisite for everything — decorators, `with`, `yield`, `__call__`, `*args`. Read first. |
 | 1 | [Pipeline testing: pytest, Airflow/Dagster, Postman](./01_pipeline_testing_pytest_airflow_dagster_postman.md) | "Functional and regression testing of ML pipelines using pytest and Airflow/Dagster test utilities and API testing tools" |
 | 2 | [Data contracts & schemas at the ingest boundary](./02_data_contracts_schemas_pandera.md) | "Validate data contracts, schemas, and API compatibility across services using Pandera, and custom validation rules" |
 | 3 | [Model behavior: statistical validation](./03_model_behavior_statistical_validation.md) | "Model behavior validation (input/output ranges, invariants, edge cases) using NumPy, SciPy, and statistical assertions" |
@@ -61,7 +67,11 @@ Each file below follows the same shape:
 | 6 | [LLM testing: LangSmith, judges, cost/token/timeout](./06_llm_testing_langsmith_judge_cost.md) | "Implement LLM-specific testing..." (all three JD sub-bullets) |
 | 7 | [Observability: catching silent model failure](./07_observability_monitoring_alerting.md) | "Verify logging, monitoring, and alerting for ML services using Prometheus, Grafana, and cloud-native observability tools" |
 | 8 | [Knowing the GenAI stack: PyTorch, LangChain, vLLM](./08_genai_stack_pytorch_langchain_vllm.md) | "Familiarity and experience of GenAI applications and tools" |
+| **9** | **[Statistics from zero](./09_statistics_from_zero.md)** ⭐ | Underpins "statistical assertions" in module 3 — taught from first principles, no prior stats assumed |
 
-Read these in order once — the story builds. Then before the interview,
-skim the "How to say this out loud" sections back to back as your final
-review pass.
+**Suggested order:** module **0** first (it unlocks the rest), then 1-8 in
+sequence — the VulnPrioritize story builds across them — and module **9**
+last, as the deep dive behind module 3's statistical checks.
+
+Before the interview, skim the "How to say this out loud" sections back to
+back as your final review pass.
