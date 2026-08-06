@@ -10,7 +10,8 @@ Every module has two halves:
 | **Theory** (`README.md` in each module) | The mental model. Why the language does what it does, what the machine is doing underneath, and the traps. |
 | **Practice** (`practice/`) | Real, compilable, runnable C programs. Every file has a `main()` unless it is part of a multi-file project with its own `Makefile`. |
 
-Most modules also ship an `exercises.md` with problems and worked solutions.
+Every program compiles clean under `-Wall -Wextra -Wpedantic`, runs, and — where it
+allocates — is valgrind-clean. Nothing here is pseudocode.
 
 ---
 
@@ -50,22 +51,18 @@ Most modules also ship an `exercises.md` with problems and worked solutions.
 ### Tier 5 — Advanced C
 | Module | Topic |
 |---|---|
-| [11 — Advanced C](11-Advanced-C/) | Bit manipulation, `_Generic`, varargs, `setjmp`, generic containers via `void*`, UB, `volatile`/`restrict`, atomics |
-| [12 — Systems Programming](12-Systems-Programming/) | Syscalls, processes, pipes, signals, pthreads, mutex/condvar, thread pool, `mmap`, TCP sockets |
-| [13 — Performance and Optimization](13-Performance-and-Optimization/) | Cache hierarchy, locality, tiling, branch prediction, SIMD intrinsics, profiling |
-| [14 — Debugging and Testing](14-Debugging-and-Testing/) | `gdb`, `valgrind`, ASan/UBSan, a minimal unit test framework, deliberate bug hunts |
+| [11 — Advanced C](11-Advanced-C/) | Bit manipulation and bitsets, `_Generic` type dispatch, `setjmp`/`longjmp`, UB, `volatile`/`restrict` |
+| [12 — Systems Programming](12-Systems-Programming/) | Syscalls, processes, pipes, signals, pthreads, mutex/condvar, thread pool, false sharing |
 
-### Tier 6 — Numerical and Machine Learning
+### Tier 6 — Machine Learning
 | Module | Topic |
 |---|---|
-| [15 — Numerical Computing](15-Numerical-Computing/) | IEEE-754, floating point traps, a matrix library, Gaussian elimination, RNGs |
-| [16 — Machine Learning in C](16-Machine-Learning-in-C/) | Linear regression → logistic regression → k-NN/k-means → decision trees → **a neural network from scratch** → **a reverse-mode autodiff engine** → convolutions and an inference loop |
+| [16 — Machine Learning in C](16-Machine-Learning-in-C/) | Gradient descent → **a neural network with backpropagation derived by hand** → **a reverse-mode autodiff engine** |
 
-### Tier 7 — Build Real Things
-| Module | Topic |
+### Reference
+| | |
 |---|---|
-| [17 — Projects](17-Projects/) | A shell, a JSON parser, a stack-based virtual machine, a mini ML framework |
-| [Reference](Reference/) | Cheat sheet, standard library map, pitfalls, interview questions, glossary |
+| [Reference/cheatsheet.md](Reference/cheatsheet.md) | Everything worth having on one page |
 
 ---
 
@@ -81,8 +78,8 @@ A realistic pace:
 - **Weeks 3–5** — Modules 04–06. This is the hump. Pointers and memory are the whole language.
 - **Weeks 6–7** — Modules 07–08. You can now build multi-file programs.
 - **Weeks 8–11** — Modules 09–10. Implement every data structure without looking.
-- **Weeks 12–15** — Modules 11–14. This is where you become dangerous.
-- **Weeks 16–20** — Modules 15–17. Numerics and ML, then ship a project.
+- **Weeks 12–15** — Modules 11–12. This is where you become dangerous.
+- **Weeks 16–20** — Module 16. Build the neural network, then the autodiff engine.
 
 ---
 
@@ -110,8 +107,14 @@ make asan
 make clean
 ```
 
-Multi-file projects (module 08, parts of 16, and all of 17) have their own `Makefile`;
-`cd` into the directory and run `make`.
+Multi-file projects (module 08's `mathlib`, module 06's opaque `Stack`, and every ML
+sub-module) have their own `Makefile`; `cd` into the directory and run `make` or `make run`.
+
+```bash
+cd 16-Machine-Learning-in-C/06-autodiff && make run   # the autodiff engine
+cd 16-Machine-Learning-in-C/05-neural-network && make run
+cd 08-Modular-Programming-and-Build-Systems/practice/mathlib && make test
+```
 
 ### The flags used everywhere
 

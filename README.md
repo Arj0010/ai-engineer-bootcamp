@@ -1,4 +1,15 @@
-# AI Engineer Interview Bootcamp
+# My Learning Bootcamps
+
+A collection of self-built, hands-on curricula. Each one is a complete learning system
+rather than a tutorial collection — theory paired with code you compile, run, and break.
+
+| Bootcamp | What it covers |
+|---|---|
+| **[C Language Mastery](C-Language-Mastery/)** | C from first principles to machine learning: pointers, memory management (including writing your own `malloc`), data structures, algorithms, systems programming, and a neural network plus a reverse-mode autodiff engine built from scratch. 64 compilable programs. |
+| **[QA Data Science Engineer Bootcamp](QA-Data-Science-Engineer-Bootcamp/)** | Role-targeted preparation built from a real job description. |
+| **AI Engineer modules** (below) | RAG, LangChain, Agentic AI, and project storytelling. |
+
+---
 
 ## 🔥 The Job Description IS Your Syllabus
 
