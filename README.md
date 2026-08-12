@@ -7,6 +7,7 @@ rather than a tutorial collection — theory paired with code you compile, run, 
 |---|---|
 | **[C Language Mastery](C-Language-Mastery/)** | C from first principles to machine learning: pointers, memory management (including writing your own `malloc`), data structures, algorithms, systems programming, and a neural network plus a reverse-mode autodiff engine built from scratch. 64 compilable programs. |
 | **[QA Data Science Engineer Bootcamp](QA-Data-Science-Engineer-Bootcamp/)** | Role-targeted preparation built from a real job description. |
+| **[LLM Systems Revision](LLM-Systems-Revision/)** | Interview-focused revision layer over the AI modules: whiteboard-reproducible pseudocode for the agent loop / LangGraph / multi-agent, eight decision frameworks with switching conditions, and narration scripts for "what was your thought process". |
 | **AI Engineer modules** (below) | RAG, LangChain, Agentic AI, and project storytelling. |
 
 ---
