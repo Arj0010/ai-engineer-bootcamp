@@ -9,13 +9,17 @@ This answers *"why did you choose it, and when would you not?"*
 
 ---
 
-## The three files
+## The four files
 
 | File | What it's for | When to use it |
 |---|---|---|
 | **[01-pseudocode.md](01-pseudocode.md)** | Six cards you can reproduce on a whiteboard from memory | Study first. If you can't draw the agent loop cold, start here. |
 | **[02-decisions.md](02-decisions.md)** | Eight decision frameworks with deciding factors and switching conditions | The core of what they're probing |
 | **[03-narration.md](03-narration.md)** | Worked answers, the narration template, phrases that signal seniority | The day before / morning of |
+| **[04-drill.md](04-drill.md)** | 20 mock questions with model answers — active recall | After reading 01–03. This is where it becomes speakable. |
+
+The first three are input. **The fourth is the one that changes your performance**, because
+the interview is a speaking task and reading is not speaking practice.
 
 ---
 
@@ -66,9 +70,11 @@ routers are code, nodes call models.
    mind"* sections — that's the part that's hard to improvise.
 3. Read the worked answers in `03-narration.md` **out loud**. Reading silently does not
    prepare you to speak.
+4. Work through `04-drill.md` with the answers covered, timing yourself. Score each answer
+   against the checklist at the bottom of that file.
 
 **If you have 30 minutes:**
-Read the five things above, then the worked answers in `03-narration.md`.
+The five things above, then Q2, Q6, Q12, Q18 and Q20 of `04-drill.md` — out loud.
 
 **If you have 10 minutes:**
 The drill at the bottom of `03-narration.md`.
